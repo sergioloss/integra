@@ -6,9 +6,11 @@ app.controller('IntegratorController', [
     '$location',
     '$timeout',
     '$mdDialog',
+    '$mdSidenav',
+    '$sce',
     'IntegratorService',
     'Page',
-    function ($scope, $stateParams, $location, $timeout, $mdDialog, IntegratorService, Page) {
+    function ($scope, $stateParams, $location, $timeout, $mdDialog, $mdSidenav, $sce, IntegratorService, Page) {
 
         Page.SetTitle('Integradores');
         
@@ -54,11 +56,15 @@ app.controller('IntegratorController', [
             regex = new RegExp('\\b' + escapeRegExp(searchString), 'i');
             $scope.resetListScroll();
         });
-        
+
         $scope.filterBySearch = function(integrator) {
             if (!$scope.search) return true;
             return (regex.test(integrator.id) || regex.test(integrator.name));
         };
+        
+        $scope.editIntegratorDescription = $sce.trustAsHtml(
+            $scope.editIntegrator.description
+        );
         
         $scope.changeOrderByFieldName = function (orderFieldName) {
             if ($scope.orderFieldName == orderFieldName) {
@@ -96,11 +102,14 @@ app.controller('IntegratorController', [
         };
         
         $scope.showDetails = function (id) {  
-                    console.log("showDetails");
-
             $scope.activeId = id;
             $location.path('integradores/' + id);
             $scope.autoScrollIntegratorsList = true;
+            $mdSidenav('right').toggle();
+        };
+        
+        $scope.closeDetails = function () {
+            $mdSidenav('right').close();
         };
         
         $scope.refreshList = function () {

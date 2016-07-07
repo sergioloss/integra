@@ -16,8 +16,8 @@
     <link rel="stylesheet" type="text/css" href="/content/main.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body>
-    <div id="div-container">
+<body layout="column">
+    <div id="div-container" layout="column">
         <header>
             <div ui-view="header" id="div-header"></div>
             <div ui-view="main-menu" id="main-menu"></div>
@@ -25,11 +25,11 @@
         <nav>           
             <div ui-view="nav" id="div-nav"></div>
         </nav>
-        <section id="content">
-            <div ui-view="content" id="div-content">Content</div>
+        <section id="content" layout="column">
+            <div ui-view="content" id="div-content" layout="column"></div>
         </section>
         <footer>
-            <div ui-view="footer" id="div-footer">Footer</div>
+            <div ui-view="footer" id="div-footer"></div>
         </footer>
     </div>   
     

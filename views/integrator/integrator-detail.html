@@ -21,10 +21,11 @@
             </i>
             <i class="material-icons" style="cursor: pointer;" ng-click="save()" ng-show="!readOnly">save</i>
             <i class="material-icons" style="cursor: pointer;" ng-click="delete(editIntegrator.id)" ng-show="readOnly">delete</i>
+            <i class="material-icons" style="cursor: pointer;" ng-click="closeDetails()">close</i>
         </div>
     </div>
 </md-toolbar>
-<md-content layout="column"  class="md-padding" style="height: 100%;">
+<md-content layout="column">
     <form name="form" 
           id="form" 
           novalidate 
@@ -33,12 +34,12 @@
           layout="column"
           >
         <h3>Dados cadastrais</h3>
-        <div layout="row">
-            <md-input-container flex="25">
+        <div layout="column" layout-gt-xs="row">
+            <md-input-container flex-gt-xs="25">
                 <label>id:</label>
                 <input type="text" name="id" ng-model="editIntegrator.id" readonly />
             </md-input-container>
-            <md-input-container flex="75">
+            <md-input-container flex-gt-xs="75">
                 <label>Nome:</label>
                 <input type="text" name="name" ng-model="editIntegrator.name" required ng-readonly="readOnly" ng-focus="(!readOnly && editIntegrator.name == '')"/>
                 <div ng-messages="form.name.$error">                     
@@ -48,7 +49,7 @@
         </div>
         <md-input-container>
             <label>Descri&ccedil;&atilde;o:</label>
-            <textarea name="description" ng-model="editIntegrator.description" ng-readonly="readOnly"></textarea>
+            <textarea parse-url="editIntegrator.description" ng-bind-html="editIntegratorDescription" name="description" ng-model="editIntegrator.description" ng-readonly="readOnly"></textarea>
         </md-input-container>
         <div layout="row" layout-align="left center">
             <h3 style="margin-right: 12px;">
@@ -74,19 +75,21 @@
         <!--
         <div layout="row" ng-show="newContactFlag" flex="100" class="formEditMode" style="border: solid 1px blue; margin: 0; width: 99.6%;">
         -->        
-        <md-whiteframe layout="row"  ng-show="newContactFlag"  class="md-whiteframe-2dp formContactEditMode" layout-align="left center">
-            <md-input-container flex="10">
+        <md-whiteframe layout="row" layout-xs="column" ng-show="newContactFlag"  class="md-whiteframe-2dp formContactEditMode" 
+                       layout-align="center center"
+                       >
+            <md-input-container flex-gt-xs="10">
                 <label>id:</label>
                 <input type="text" name="contact_id" value="******" readonly />
             </md-input-container>
-            <md-input-container flex="35">
+            <md-input-container flex-gt-xs="35">
                 <label>Nome:</label>
                 <input type="text" name="contact_name" ng-model="newContact.name" ng-required="{{ !newContact.name }}"/>
                 <div ng-messages="form.contact_name.$error">                     
                     <div ng-message="required">Campo obrigatório.</div>
                 </div>
             </md-input-container>
-            <md-input-container flex="50">
+            <md-input-container flex-gt-xs="50">
                 <label>E-mail:</label>
                 <input type="email" name="contact_email" ng-model="newContact.email" ng-required="{{ !newContact.email }}" />
                 <div ng-messages="form.contact_email.$error">                     
@@ -94,7 +97,7 @@
                     <div ng-message="email">E-mail inv&aacute;lido.</div>
                 </div>
             </md-input-container>
-            <div flex="5" layout="row" layout-align="left center">
+            <div flex-gt-xs="5" layout="row" layout-align="center center">
                 <i class="material-icons" 
                     style="cursor: pointer; vertical-align: middle; width: 22px;" 
                     ng-click="resetNewContact()" 
@@ -115,8 +118,11 @@
                 </i>                
             </div>
         </md-whiteframe>
-        <div layout="row" layout-align="center left" flex="100" class="orderByBar" ng-show="editIntegrator.contacts.length > 0">
-            <div flex="10" layout="column" layout-align="center end" class="orderByColumnHeader" ng-class="{oderedColumn : orderContactsBy == 'id'}">
+        <div hide-xs show-gt-xs layout="column" layout-gt-xs="row" layout-align="center center" flex="100" class="orderByBar" 
+             ng-show="editIntegrator.contacts.length > 0"
+             >
+            <div flex-gt-xs="10" layout="column" layout-align="center end" class="orderByColumnHeader" 
+                 ng-class="{oderedColumn : orderContactsBy == 'id'}">
                 <i class="material-icons" 
                     style="cursor: pointer; middle; width: 22px;" 
                     ng-click="contactsOrderBy('id')" 
@@ -132,7 +138,7 @@
                     arrow_drop_up
                 </i>                       
             </div>
-            <div flex="35" layout="column" layout-align="center end" class="orderByColumnHeader" ng-class="{oderedColumn : orderContactsBy == 'name'}">
+            <div flex-gt-xs="35" layout="column" layout-align="center end" class="orderByColumnHeader" ng-class="{oderedColumn : orderContactsBy == 'name'}">
                 <i class="material-icons" 
                     style="cursor: pointer; middle; width: 22px;" 
                     ng-click="contactsOrderBy('name')" 
@@ -148,7 +154,7 @@
                     arrow_drop_up
                 </i>           
             </div>
-            <div flex="50" layout="column" layout-align="center end" class="orderByColumnHeader" ng-class="{oderedColumn : orderContactsBy == 'email'}">
+            <div flex-gt-xs="50" layout="column" layout-align="center end" class="orderByColumnHeader" ng-class="{oderedColumn : orderContactsBy == 'email'}">
                 <i class="material-icons" 
                     style="cursor: pointer; middle; width: 22px;" 
                     ng-click="contactsOrderBy('email')" 
@@ -164,7 +170,7 @@
                     arrow_drop_up
                 </i>
             </div>
-            <div flex="5" layout="column" layout-align="center end" class="orderByColumnHeader" >
+            <div flex-gt-xs="5" layout="column" layout-align="center end" class="orderByColumnHeader" >
                 &nbsp;
             </div>
         </div>
@@ -172,18 +178,17 @@
                     layout="column" 
                     style="margin-top: 3px;"
                     >
-            <md-list flex="100" ng-class="{ formEditMode : !readOnly }">
+            <md-list flex ng-class="{ formEditMode : !readOnly }">
                 <md-list-item ng-repeat="contact in editIntegrator.contacts | orderBy: orderContactsBy : orderContactsDesc" 
                               class="md-1-line" 
-                              flex="100"
-                              
+                              flex                              
                               >
-                    <div layout="row" flex="100" ng-class="{ formContactEditMode : $parent.idContactEdit == contact.id }">
-                        <md-input-container flex="10">
+                    <div layout="column" layout-gt-xs="row" flex ng-class="{ formContactEditMode : $parent.idContactEdit == contact.id }">
+                        <md-input-container flex-gt-xs="10">
                             <label>id:</label>
                             <input type="text" name="contact_id_{{$index}}" ng-model="contact.id" readonly />
                         </md-input-container>
-                        <md-input-container flex="35" >
+                        <md-input-container flex-gt-xs="35" >
                             <label>Nome:</label>
                             <input type="text" name="contact_name_{{ contact.id }}" ng-model="contact.name" required 
                                    ng-readonly="$parent.readOnly && $parent.idContactEdit != contact.id" 
@@ -192,7 +197,7 @@
                                 <div ng-message="required">Campo obrigatório.</div>
                             </div>
                         </md-input-container>
-                        <md-input-container flex="50">
+                        <md-input-container flex-gt-xs="50">
                             <label>E-mail:</label>
                             <input type="text" name="contact_email_{{ contact.id }}" ng-model="contact.email" required 
                                    ng-readonly="$parent.readOnly && $parent.idContactEdit != contact.id"
@@ -201,7 +206,7 @@
                                 <div ng-message="required">Campo obrigatório.</div>
                             </div>
                         </md-input-container>
-                        <div flex="5" layout="row" layout-align="left center">
+                        <div flex-gt-xs="5" layout="row" layout-align="center center">
                             <i class="material-icons" style="cursor: pointer;" ng-click="editContact(contact)" ng-show="$parent.idContactEdit != contact.id">edit</i>
                             <i class="material-icons" style="cursor: pointer;" ng-click="undoContact(contact.id)" ng-show="$parent.idContactEdit == contact.id">undo</i>
                             <i class="material-icons" style="cursor: pointer;" ng-click="saveContact(contact.id)" ng-show="$parent.idContactEdit == contact.id">save</i>

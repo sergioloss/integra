@@ -1,0 +1,112 @@
+<div layout="column" layout-align="left left" class="md-whiteframe-z2">
+    <md-content layout="row" class="md-padding" >
+        <div layout="column"
+             flex="40"              
+             class="div-sidebar"
+             ng-cloak=""
+             >
+            <md-toolbar class="md-tall">
+                <div class="md-toolbar-tools" layout="row" layout-align="left center">
+                    <div flex="45">
+                        <h3>
+                            <span>Integradores</span>
+                        </h3>
+                    </div>
+                    <div flex="40" layout layout-align="end center">
+                        <span>Ordenar por:</span>
+                        <md-menu md-offset="0 43">
+                            <md-button class="order-by-button" ng-click="$mdOpenMenu($event)" >
+                                {{ orderFieldLabel }}
+                            </md-button>
+                            <md-menu-content width="2">
+                                <md-menu-item ng-repeat="field in orderByFieldList"
+                                              ng-selected="{{ field.label.value == orderFieldLabel }}">
+                                    <md-button ng-click="changeOrderByFieldName(field.name)"> {{ field.label }} </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>                        
+                        <i class="material-icons" style="cursor: pointer;" ng-click="orderBy()" alt="Atualizar" ng-show="!orderByDesc">
+                            arrow_drop_down
+                            <md-tooltip>Ordem crescente</md-tooltip>
+                        </i>
+                        <i class="material-icons" style="cursor: pointer;" ng-click="orderBy()" alt="Atualizar" ng-show="orderByDesc">
+                            arrow_drop_up
+                            <md-tooltip>Ordem decrescente</md-tooltip>
+                        </i>
+                    </div>
+                    <div flex="15" layout layout-align="end center">
+                        <i class="material-icons" style="cursor: pointer;" ng-click="findSelectedItem()" alt="Pesquisar" ng-show="activeId">
+                            find_in_page
+                            <md-tooltip>Localizar integrador selecionado</md-tooltip>
+                        </i>
+                        <i class="material-icons md-light md-inactive" alt="Pesquisar" ng-show="!activeId">
+                            find_in_page
+                        </i>
+                        <span>&nbsp;</span>
+                        <i class="material-icons" style="cursor: pointer;" ng-click="refreshList()" alt="Atualizar">
+                            refresh
+                            <md-tooltip>Atualizar lista</md-tooltip>
+                        </i>
+                        <span>&nbsp;</span>
+                        <i class="material-icons" style="cursor: pointer;" ng-click="new()" alt="Inserir">
+                            add_circle
+                            <md-tooltip>Inserir novo integrador</md-tooltip>
+                        </i>
+                    </div>
+                </div>
+                <span flex></span>
+                <div layout="row" layout-align="left center" class="searchBar">
+                    <div flex="5" layout="row" layout-align="center center">
+                        <i class="material-icons md-dark md-inactive" alt="Pesquisar">
+                            search
+                        </i>
+                    </div>
+                    <md-input-container flex="90">
+                        <label>Buscar...</label>
+                        <input type="text" ng-model="search">
+                    </md-input-container>    
+                    <span flex></span>
+                    <div flex="5" layout="row" layout-align="center center">
+                        <i class="material-icons" style="cursor: pointer; color: red;" ng-click="search = ''" alt="Atualizar" ng-show="search">undo</i>
+                    </div>
+                </div>
+
+            </md-toolbar>
+            <md-content class="scroll-container" 
+                        layout="column" 
+                        auto-scroll="{scrollToSelectedClassName: 'nav-active', reset: 'resetListScrollFlag'}"
+                        >
+                <md-list flex>
+                    <md-subheader class="md-sticky md-subheader"><b>{{ search ? 'Resultado da busca por "' + search + '"' : 'Lista completa'}}</b></md-subheader>
+                    <md-list-item ng-repeat="integrator in integrators | filter:filterBySearch | orderBy: orderFieldName : orderByDesc" 
+                                  class="md-2-line" 
+                                  ng-class="{ 'nav-active': integrator.id == activeId }"    
+                                  ng-click="showDetails(integrator.id)"
+                                  index="{{ $index }}"
+                                  >
+                        <div class="md-list-item-text" layout="column">
+                            <h3><span>id:&nbsp;</span><b>{{ integrator.id }}</b></h3>
+                            <h4><span>Nome:&nbsp;</span><b>{{ integrator.name }}</b></h4>
+                        </div>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+                </md-list>
+            </md-content>                
+        </div>
+        <div flex layout="column" ui-view="detail" class="div-integrator-detail">
+            <div ng-show="result.type == 'error'" 
+                 class="error-message"
+                 >
+                    {{ result.message }}
+            </div>
+            <div ng-show="result.type == 'message'" 
+                 class="result-message"
+                 layout="row"
+                 layout-align="center center"
+                 >
+                    <i class="material-icons" style="font-size: 40px;" >chevron_left</i>
+                    <b>{{ result.message }}</b>
+            </div>
+        </div>
+    </md-content>
+</div>
