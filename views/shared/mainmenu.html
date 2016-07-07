@@ -1,0 +1,52 @@
+<md-toolbar class="md-menu-toolbar">
+    <md-whiteframe class="md-whiteframe-1dp" layout="row">
+        <md-toolbar-filler layout layout-align="center center">
+            <i class="material-icons" style="cursor: pointer;" ng-click="mainMenu.changeView('/')">home</i>
+        </md-toolbar-filler>
+        <div>
+            <md-menu-bar>
+                <md-menu>
+                    <button ng-click="$mdOpenMenu()">
+                        Sistema
+                    </button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ng-click="mainMenu.changeView('/')">
+                                In&iacute;cio (Home)                                
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                            <md-button ng-click="mainMenu.sampleAction('Config', $event)">
+                                Config
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                            <md-button ng-click="mainMenu.logout()">
+                                Logout
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+                <md-menu>
+                    <button ng-click="$mdOpenMenu()">
+                        Cadastro
+                    </button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ng-click="mainMenu.changeView('integradores')">
+                                Integradores
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="mainMenu.sampleAction('Clientes', $event)">
+                                Clientes
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-bar>
+        </div>
+    </md-whiteframe>
+</md-toolbar>

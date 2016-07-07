@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="Integra-0.3" ng-controller="mainController">
+<head>
+    <meta charset="utf-8" />
+    <title>{{ Page.Title() }}</title>
+    <!--script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script-->
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <style type="text/css">
+        header, section, footer, aside, nav, article, figure, audio, video, canvas  { display:block; }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/content/angular-material.css" />
+    <link rel="stylesheet" type="text/css" href="/content/ui-grid.css" />
+    <link rel="stylesheet" type="text/css" href="/content/main.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div id="div-container">
+        <header>
+            <div ui-view="header" id="div-header"></div>
+            <div ui-view="main-menu" id="main-menu"></div>
+        </header>            
+        <nav>           
+            <div ui-view="nav" id="div-nav"></div>
+        </nav>
+        <section id="content">
+            <div ui-view="content" id="div-content">Content</div>
+        </section>
+        <footer>
+            <div ui-view="footer" id="div-footer">Footer</div>
+        </footer>
+    </div>   
+    
+    <!-- scripts -->
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-ui-router.js"></script>
+    <script src="scripts/underscore.js"></script>
+    <script src="scripts/angular-messages.js"></script>
+    <script src="scripts/angular-aria.js"></script>
+    <script src="scripts/angular-animate.js"></script>
+    <script src="scripts/angular-material.js"></script>
+    
+    <script src="scripts/ngStorage.js"></script>
+    <!--
+    <script src="scripts/ui-grid.js"></script>
+    -->    
+    
+    <script src="scripts/angular-auto-scroll.js"></script>
+
+    <!-- scripts-controllers -->
+    <script src="scripts/main.js"></script>
+    <script src="controllers/AuthenticationController.js"></script>
+    <script src="controllers/HomeController.js"></script>
+    <script src="controllers/MainMenuController.js"></script>
+    <script src="controllers/IntegratorController.js"></script>
+    
+    <!-- scripts for fake backend -->
+    <script src="scripts/angular-mocks.js"></script>
+    <script src="scripts/fakeBackend.js"></script>
+    
+</body>
+</html>

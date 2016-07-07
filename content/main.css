@@ -1,0 +1,276 @@
+html, body {
+    height:100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#div-container, #div-container.inner {
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#div-header {
+    /*border: solid 1px #4f69fa;*/
+    padding: 4px;
+    background-color: #EEE;
+    min-height: 40px;
+}
+
+#div-nav {
+    /*border: solid 1px #ffa700;*/
+    background-color: #EEE;
+    border-top: solid 1px #d5d5d5;
+    padding: 3px 7px;
+    /*margin-bottom: 15px;*/
+    font-size: 0.8em;
+    color: #969696;
+}
+
+#content, #div-content {
+    flex: 1;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+#div-content ul {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+}
+
+#div-footer {
+    border-top: solid 3px #CCC;
+    padding: 15px;
+    /*margin-top: 30px;*/
+    clear: both;    
+    background-color: #EEE;
+    min-height: 30px;
+}
+
+/*--------------------------------------------------------------*/
+
+.header {
+    margin: -5px 15px;
+    color: rgb(63,81,181);
+}
+
+.div-home {
+    margin: auto;
+}
+
+.div-home.iw-watermark {
+    font-size: 50px;
+    font-weight: bolder; 
+    text-align: center;
+    color: #EEE;    
+}
+
+.div-sidebar {
+    border: solid 1px #CCC;
+    /*height: 100%;*/
+    min-height: 100%;
+}
+
+.div-integrator-detail {
+    /*display: block;*/
+    /*float: left;*/
+    /*padding: 0 20px 10px 20px;*/
+    border: solid 1px #ffb206;
+    background-color: antiquewhite;
+    margin-left: 15px;
+}
+
+.div-integrator-detail table, th, td {
+    border-collapse: collapse;
+    border: solid 1px #8ba1fd;
+    padding: 4px;
+}
+
+.searchBar {
+    background-color: antiquewhite; 
+    /*padding-left: 15px;*/
+    padding-top: 15px;
+    margin-bottom: 4px;
+    /*margin: 0 2px 2px 2px;*/
+    color: #3f51b5;
+}
+
+.order-by-button {
+    background-color: #566dcc;
+}
+
+.result-message {
+    border-top: solid 7px #ffcd8a;
+    border-bottom: solid 7px #ffcd8a;
+    background-color: #ffe2ba;
+    padding: 15px 10px;
+    color: #7e7e7e;
+    font-size: 1.2em;
+    margin: 120px 40px 20px 40px;
+}
+/* -----------------------------------------------------------------------------------------
+ * Para sobrescrever uma classe do angular-material.css:
+ * Utilizar a hierarquia do CSS colocando as novas classes vinculadas ao id da tag container
+ * Ex.: #content .teste-class { color: red; }
+ * */
+
+#content md-toolbar .md-medium-tall {
+    height: 42px;
+    min-height: 42x;
+    max-height: 42px;
+}
+
+#content .md-padding {
+    padding: 5px;
+}
+
+@media (min-width: 960px) {
+    #content .md-padding {
+    padding: 10px; } 
+}
+
+#content .md-toolbar {
+    min-height: 42px; 
+}
+
+#content md-toolbar .md-menu {
+    margin: 0;
+}
+
+#content .md-subheader {
+    background-color: #ccd8ff;  
+    min-height: 25px;
+    height: 38px;
+}
+
+#content ._md-subheader-inner {
+    padding: 11px;
+}
+
+#content .md-2-line {
+    min-height: 45px;
+}
+
+#content .md-2-line ._md-no-style {
+    min-height: 45px;    
+}
+
+#content .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+#content .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+#content .material-icons.md-light { color: rgba(255, 255, 255, 1); }
+#content .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+/*
+ * Para alterar a altura (height) dos ítens de um "md-list-item"
+ *
+ * */
+
+        #content md-list-item.md-2-line
+        , #content md-list-item.md-2-line > ._md-no-style {
+            height: auto;
+            min-height: 60px; 
+        }
+
+        #content md-list-item.md-2-line div.md-button:first-child::before
+        , #content md-list-item.md-2-line > ._md-no-style div.md-button:first-child::before {
+            content: '';
+            min-height: 60px;
+            visibility: hidden;
+            display: inline-block; 
+        }
+
+
+/* 
+ * https://github.com/angular/material/issues/7277
+ * mdList: how to make md-list-item item row height smaller
+ * */
+
+/* ---------
+ * Login view
+ * ---------
+ */
+
+/*
+md-list-item .md-button:not([disabled]):hover {
+  background-color: transparent;
+}
+*/
+
+.nav-active {
+  background-color: #6ac0ff;
+  color: #292162;
+}
+
+.nav-active md-icon {
+  color: purple;
+} 
+/*
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+*/
+
+
+
+/* ---------
+ * Login view
+ * ---------
+ */
+
+.loginBox {
+    max-width: 90%;
+    width: 350px;
+    margin: auto;
+}
+
+.stretch input  {
+  width: 100%;
+}
+
+/* ---------
+ * Clear button for text box
+ * ---------
+ */
+
+.animate-show.ng-hide-add.ng-hide-add-active,
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.0s !important;
+    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.0s !important;
+}
+
+.animate-show.ng-hide {
+  opacity: 0 !important;
+}
+
+/***************************/
+
+.formEditMode {
+    background-color: antiquewhite;
+}
+
+.formContactEditMode {
+    background-color: #fff5e7;
+}
+
+.integratorsContactsGrid {
+    width: 100%;
+    height: 203px;
+}
+
+.orderByBar {
+    margin-top: 15px;
+    padding: 0 12px;
+}
+
+.orderByColumnHeader {
+    border-bottom: solid 2px #ddd;
+    margin: 0 2px;
+    background-color: #eFeFeF;
+}
+
+.oderedColumn {
+    color: #1ea0ff;
+    /*color: #f47a00;*/
+    background-color: #e0e0e0;
+}

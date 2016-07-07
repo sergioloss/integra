@@ -1,0 +1,32 @@
+<div layout="column" layout-align="center center" class="loginBox md-whiteframe-z1">
+    <md-toolbar>
+        <h2 class="md-toolbar-tools"><span>Login</span></h2>
+    </md-toolbar>
+    <md-content layout="column" class="md-padding" style="width: 100%">
+        <form name="loginForm"  layout="column" layout-align="center center" ng-submit="loginForm.$valid && auth.login()" novalidate>
+            <md-input-container style="width: 90%">
+                <label>E-mail (test@test.com)</label>
+                <input type="email" name="email" ng-model="auth.username" required />
+                <!--div ng-messages="loginForm.email.$error" ng-show="loginForm.email.$error.email || loginForm.email.$error.required"-->
+                <div ng-messages="loginForm.email.$error">                     
+                    <div ng-message="required">Campo obrigatório.</div>
+                    <div ng-message="email">E-mail inválido.</div>
+                </div>
+            </md-input-container>
+            <md-input-container style="width: 90%">
+                <label>Senha (test)</label>
+                <input type="password" name="password" ng-model="auth.password" required/>
+                <div ng-messages="loginForm.password.$error">                     
+                    <div ng-message="required">Campo obrigatório.</div>
+                </div>
+            </md-input-container>
+            <div layout="column" layout-align="center center" style="padding-top:20px;">
+                <md-button type="submit" class="md-raised md-primary" ng-disabled="auth.loading" >Login</md-button>
+                <img ng-if="auth.loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                <div ng-if="auth.error" class="alert alert-danger">{{auth.error}}</div>
+                <div flex="flex"></div>
+                <md-button ng-click="auth.sampleAction('Lembrar senha', $event)" href="" md-no-ink="md-no-ink">Esqueci minha senha</md-button>
+            </div>
+        </form>
+    </md-content>
+</div>
