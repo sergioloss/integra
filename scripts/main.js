@@ -6,6 +6,7 @@ var app = angular.module('Integra-0.3', [
     'ngMessages', 
     'ngStorage', 
     'ngMockE2E', 
+    'ngSanitize',
     //'ui.grid',
     'auto-scroll'
 ]);

@@ -47,10 +47,19 @@
                 </div>
             </md-input-container>
         </div>
-        <md-input-container>
+        <md-input-container ng-if="!readOnly">
             <label>Descri&ccedil;&atilde;o:</label>
-            <textarea parse-url="editIntegrator.description" ng-bind-html="editIntegratorDescription" name="description" ng-model="editIntegrator.description" ng-readonly="readOnly"></textarea>
+            <textarea name="description"                       
+                      ng-model="editIntegrator.description" 
+                      ng-readonly="readOnly"
+                      >
+            </textarea>
         </md-input-container>
+        <md-input-container ng-if="readOnly" class="md-dirty md-input-has-value">
+            <label>Descri&ccedil;&atilde;o:</label>
+            <div ng-bind-html="editIntegrator.description | linky:'_blank':{rel: 'nofollow'}" class="div-textarea"></div>
+        </md-input-container>
+
         <div layout="row" layout-align="left center">
             <h3 style="margin-right: 12px;">
                 Contatos

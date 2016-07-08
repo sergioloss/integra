@@ -7,10 +7,9 @@ app.controller('IntegratorController', [
     '$timeout',
     '$mdDialog',
     '$mdSidenav',
-    '$sce',
     'IntegratorService',
     'Page',
-    function ($scope, $stateParams, $location, $timeout, $mdDialog, $mdSidenav, $sce, IntegratorService, Page) {
+    function ($scope, $stateParams, $location, $timeout, $mdDialog, $mdSidenav, IntegratorService, Page) {
 
         Page.SetTitle('Integradores');
         
@@ -62,9 +61,11 @@ app.controller('IntegratorController', [
             return (regex.test(integrator.id) || regex.test(integrator.name));
         };
         
+        /*
         $scope.editIntegratorDescription = $sce.trustAsHtml(
             $scope.editIntegrator.description
         );
+        */
         
         $scope.changeOrderByFieldName = function (orderFieldName) {
             if ($scope.orderFieldName == orderFieldName) {
@@ -436,7 +437,7 @@ app.factory('IntegratorService', function () {
         {
             id: 2,
             name: '2222222222',
-            description: 'Integrador 2 .',
+            description: 'Integrador 2 .\r\n\r\nhttp://www.imovelweb.com.br\r\n',
             contacts: [
                 {
                     id: 3,
