@@ -42,7 +42,7 @@ html, body {
 
 #div-footer {
     border-top: solid 3px #CCC;
-    padding: 15px;
+    padding: 6px 15px;
     /*margin-top: 30px;*/
     clear: both;    
     background-color: #EEE;

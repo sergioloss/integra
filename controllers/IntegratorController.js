@@ -61,12 +61,6 @@ app.controller('IntegratorController', [
             return (regex.test(integrator.id) || regex.test(integrator.name));
         };
         
-        /*
-        $scope.editIntegratorDescription = $sce.trustAsHtml(
-            $scope.editIntegrator.description
-        );
-        */
-        
         $scope.changeOrderByFieldName = function (orderFieldName) {
             if ($scope.orderFieldName == orderFieldName) {
                 $scope.orderByDesc = !$scope.orderByDesc;
@@ -149,7 +143,6 @@ app.controller('IntegratorController', [
             $scope.idContactEdit = -1;
         };
 
-
         $scope.getListItemIndex = function (id) {
             // Get the list index for auto-scroll function  
             var i = 0;
@@ -165,6 +158,8 @@ app.controller('IntegratorController', [
             $scope.refreshList();
             $scope.editIntegrator = angular.copy($scope.defaultForm);
             $location.path('integradores/novo');
+            
+            $mdSidenav('right').toggle();
         };
 
         $scope.edit = function () {
